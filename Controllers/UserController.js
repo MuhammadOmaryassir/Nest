@@ -1,2 +1,2 @@
-const db = require('../models/User')
+const Users = require('../models/Users')
 

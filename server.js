@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const DataBase = require('./Config/db-configs')
 const users = require('./routes/api/users')
+const Users = require('./models/Users')
 
 const port = process.env.PORT || 5000
 
@@ -67,3 +68,16 @@ class Server{
 let server = new Server(port)
 server.Connect()
 server.bodyParser()
+
+us = new Users({
+  email:"sasdadfam@examasd.com",
+  firsName:'mdsm',
+  lastName:'ndafn',
+  phoneNumber:'1f2565afaa5',
+  password:'12345a6aasd7',
+  tokens:{
+    access:'acvadasdacess',
+    token:'asdasfasdadsasvddasd'
+  }
+})
+us.save()

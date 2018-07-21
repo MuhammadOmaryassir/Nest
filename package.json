@@ -21,8 +21,12 @@
   },
   "homepage": "https://github.com/Omaroovee/Nest#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "express-validator": "^5.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
     "mongoose": "^5.2.4"
   }
 }
