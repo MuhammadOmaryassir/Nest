@@ -6,7 +6,6 @@ const users = require('./routes/api/users')
 const Users = require('./models/Users')
 
 const port = process.env.PORT || 5000
-
 class Server{
   constructor(port) { 
     this.serverListening = app.listen(port , (err) => {
@@ -70,19 +69,19 @@ let server = new Server(port)
 server.Connect()
 server.bodyParser()
 
-us = new Users({
-  email:"sasdadfam@examasd.com",
-  firstName:'mdsm',
-  lastName:'ndafn',
-  phoneNumber:'1f2565afaa5',
-  password:'12345a6aasd7',
-  tokens:{
-    access:'acvadasdacess',
-    token:'asdasfasdadsasvddasd'
-  },
-  userName:"Omaroovee",
-  type:'male',
-  birthDate:'1996-09-20'
+// us = new Users({
+  // email:"sasdadfam@examasd.com",
+  // firstName:'mdsm',
+  // lastName:'ndafn',
+  // phoneNumber:'1f2565afaa5',
+  // password:'12345a6aasd7',
+  // tokens:{
+  //   access:'acvadasdacess',
+  //   token:'asdasfasdadsasvddasd'
+  // },
+  // userName:"Omaroovee",
+  // type:'male',
+  // birthDate:'1996-09-20'
 
-})
-us.save()
+// })
+// us.save()
