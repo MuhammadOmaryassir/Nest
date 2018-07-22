@@ -1,7 +1,7 @@
 const app = require('./app')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const DataBase = require('./Config/db-configs')
+const configs = require('./Config/Node-Config')
 const users = require('./routes/api/users')
 const Users = require('./models/Users')
 
@@ -19,7 +19,7 @@ class Server{
 
   async Connect() {
     this.db = await mongoose
-      .connect(DataBase.mongoURI, { useNewUrlParser: true })
+      .connect(configs.mongoURI, { useNewUrlParser: true })
       .then(() => console.log('MongoDB Connected...'))
       .catch(err => console.log(err))
   }
@@ -28,10 +28,12 @@ class Server{
     // using body parser middleware
     app.use(bodyParser.urlencoded({extended: true}))
     app.use(bodyParser.json())
+    // Use Routes
+    app.use('/api/users', users)
     app.use((req, res, next) => {
 
       // Website you wish to allow to connect
-      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
+      res.setHeader('Access-Control-Allow-Origin', '*');
   
       // Request methods you wish to allow
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -53,15 +55,14 @@ class Server{
     next(err)
     })
 
+    
+
     // error handler
     // define as the last app.use callback
     app.use((err,req, res, next) => {
-    res.status(err.status || 500)
-    res.send(err.message)
-    })
-    // Use Routes
-    app.use('/api/users', users)
-
+      res.status(err.status || 500)
+      res.send(err.message)
+      })
   }
 }
 
@@ -71,13 +72,17 @@ server.bodyParser()
 
 us = new Users({
   email:"sasdadfam@examasd.com",
-  firsName:'mdsm',
+  firstName:'mdsm',
   lastName:'ndafn',
   phoneNumber:'1f2565afaa5',
   password:'12345a6aasd7',
   tokens:{
     access:'acvadasdacess',
     token:'asdasfasdadsasvddasd'
-  }
+  },
+  userName:"Omaroovee",
+  type:'male',
+  birthDate:'1996-09-20'
+
 })
 us.save()

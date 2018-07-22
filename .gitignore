@@ -66,4 +66,4 @@ npm-debug.log
 .env
 .DS_Store
 # Database configuration
-db-configs.js
+Node-Config.js
